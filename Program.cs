@@ -10,7 +10,7 @@ public class SecondQuizz
 
     public static void Main()
     {
-        (int numberOne, int numberTwo, int numberThree) = SecondQuizz.GenerateThreeNumber();
+        (int numberOne, int numberTwo, int numberThree) = SecondQuizz.EnterThreeNumbers(1, country.Length);
         SecondQuizz.Game(numberOne, numberTwo, numberThree);
     }
 
@@ -52,6 +52,7 @@ public class SecondQuizz
         return false;
     }
 
+    /*
     public static (int, int, int) GenerateThreeNumber()
     {
         Random rand = new Random();
@@ -70,10 +71,28 @@ public class SecondQuizz
 
         return (numberOne, numberTwo, numberThree);
     }
+    */
+
+    public static (int, int, int) EnterThreeNumbers(int min, int max)
+    {
+        int numberOne = EnterNumber(min, max);
+        int numberTwo = EnterNumber(min, max);
+        int numberThree = EnterNumber(min, max);
+
+        return (numberOne, numberTwo, numberThree);
+    }
 
     static int EnterNumber(int min, int max)
     {
-        /*TODO: write a function return the user enter a number between min and max and this one return the int*/
+        int result;
+        do
+        {
+            Console.WriteLine($"Entrez un nombre entre {min} et {max} ?");
+            string? input = Console.ReadLine();
+            result = Int32.Parse(input);
+        } while (result < min || result > max);
+
+        return result;
     }
 
 }
